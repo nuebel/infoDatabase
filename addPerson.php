@@ -48,10 +48,6 @@
                     <option value="m">Male</option>
                     <option value="f">Female</option>
                 </select>
-                <!--
-                <input type="radio" name="gender" value="m"/>Male
-                &nbsp;<input type="radio" name="gender" value="f"/>Female
-                -->
             </div>
             <div id="family"><div class="label">Family Group:</div> &nbsp;
                 <select name="color">
