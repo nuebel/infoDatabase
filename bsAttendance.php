@@ -45,16 +45,6 @@ session_start();
     $result = $database->query($queryStr);
     $rows = $result->numRows();
 
-//    $baseDateFall = strtotime('2010-08-25');
-//    $baseDateSpring = strtotime('2011-01-19');
-//    for ($i=0;$i<15; $i++) {
-//        if ($sem == 'fall') {
-//            $date = strtotime(date("m/d/y", $baseDateFall) . " + " . $i . " weeks");
-//        } else {
-//            $date = strtotime(date("m/d/y", $baseDateSpring) . " + " . $i . " weeks");
-//        }
-//        $weeks[$i] = $date;
-//    }
 ?>
 
 <html>

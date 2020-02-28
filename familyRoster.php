@@ -4,7 +4,6 @@ include 'includes/db_open.php';
 session_start();
 
     $queryStr = "SELECT * FROM " . $_SESSION['directoryTable'] . " WHERE color='" . $_REQUEST['color'] . "' ";
-    //$queryStr .= "ORDER BY gender, class, last_name";
     $topMessage = ucwords($_REQUEST['color']) . " Family";
 
     if ($_REQUEST['sortBy'] == 'first_name') {
@@ -43,7 +42,6 @@ session_start();
         </script>
     </head>
     <body>
-        <!--queryStr is <?php echo $queryStr;?> -->
         <h4><?php echo $topMessage?></h4>
         <div id="directory">
             <table>

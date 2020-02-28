@@ -32,7 +32,6 @@ session_start();
         $database->commit();
     } else if ($_REQUEST['newRecord'] == 'true') {
         $message = "Added New Student";
-        //$bday = date('Y-m-d', strtotime($_REQUEST['birthdate']));
         $addQuery = "INSERT INTO " . $_SESSION['directoryTable'];
         $addQuery .= " (first_name, last_name, class, gender, color, phone, email, ";
         $addQuery .= "on_campus, streetNum_local, street_local, street_perm, ";

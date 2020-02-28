@@ -38,7 +38,6 @@ $pdf->SetAutoPageBreak('true', 5);
 $pdf->AliasNbPages();
 $pdf->AddPage();
 
-//$queryStr = "SELECT * FROM bcm_students ORDER BY last_name, first_name";
 $queryStr = $_SESSION['query'];
 $result = $database->query($queryStr);
 $rows = $result->numRows();
