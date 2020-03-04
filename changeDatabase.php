@@ -9,10 +9,10 @@ session_start();
         if ($_REQUEST['formAction'] == 'updateTable') {
             $queryStr = "SELECT * FROM directory_tables WHERE id='" . $_REQUEST['updateDb'] . "'";
             $result = $database->query($queryStr);
-            $rows = $result->numRows();
+            $rows = $result->num_rows;
             if ($rows != 1) $message = "Error:";
             else {
-                $data = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+                $data = $result->fetch_assoc();
                 $_SESSION['directoryTable'] = $data['tableName'];
                 $_SESSION['directoryAttTable'] = $data['attTableName'];
                 $_SESSION['directoryTitle'] = $data['title'];
@@ -45,10 +45,10 @@ session_start();
                 <?php
                     $queryStr = "SELECT * FROM directory_tables ORDER BY title";
                     $result = $database->query($queryStr);
-                    $rows = $result->numRows();
+                    $rows = $result->num_rows;
 
                     for ($i=0; $i<$rows; $i++) {
-                        $data = $result->fetchRow(DB_FETCHMODE_ASSOC, $i);
+                        $data = $result->fetch_assoc();
                         echo "<option value='" . $data['id'] . "'>" . $data['title'] . "</option>";
                     }
                 ?>

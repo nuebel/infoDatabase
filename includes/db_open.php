@@ -1,9 +1,12 @@
 <?php
-    require_once('DB.php');
     $mydbhost = "__DBHOST__";
-    $mydatabase = "__DB__";
+    $mydatabase = "__DBNAME__";
     $mydbuserid = "__DBUSER__";
     $mydbpassword = "__DBPW__";
-    $database = DB::connect( "mysql://".$mydbuserid.":".$mydbpassword."@".$mydbhost."/".$mydatabase );
-    if (PEAR::isError($database)) {echo "Error."; die($database->getMessage());}
+
+    $database = mysqli_connect($mydbhost, $mydbuserid, $mydbpassword, $mydatabase);
+    if(mysqli_connect_errno()) {
+        echo "Failed to connect to database.";
+        die(mysqli_connect_error());
+    }
 ?>

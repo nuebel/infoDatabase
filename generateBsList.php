@@ -51,7 +51,7 @@ $queryStr = "SELECT * FROM " . $_SESSION['directoryTable'] . ", " . $_SESSION['d
 $queryStr .= "AND " . $_SESSION['directoryAttTable'] . ".studentID = " . $_SESSION['directoryTable'] . ".id ";
 $queryStr .= "ORDER BY last_name, first_name";
 $result = $database->query($queryStr);
-$rows = $result->numRows();
+$rows = $result->num_rows;
 
 //Variables
 $lineHeight = 5;
@@ -61,7 +61,7 @@ $pdf->SetFont('Arial', '', 6);
 $entryWidth = array(12, 20, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11);
 
 for($i=0; $i<$rows; $i++) {
-    $data = $result->fetchRow(DB_FETCHMODE_ASSOC, $i);
+    $data = $result->fetch_assoc();
     $pdf->Cell($entryWidth[0], $lineHeight, $data['first_name'], 'LB', 0, 'L');
     $pdf->Cell($entryWidth[1], $lineHeight, $data['last_name'], 'BR', 0, 'L');
     for ($j = 1; $j <= 15; $j++) {
