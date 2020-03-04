@@ -50,7 +50,7 @@ session_start();
         $idQuery = "SELECT id FROM " . $_SESSION['directoryTable'] . " WHERE last_name='" . $_REQUEST['last_name'] .
             "' AND first_name='" . $_REQUEST['first_name'] . "' ORDER BY id DESC";
         $result = $database->query($idQuery);
-        $data = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+        $data = $result->fetch_assoc();
         $newID = $data['id'];
 
         //Insert into the attendance table
@@ -69,7 +69,7 @@ session_start();
      . " AND " . $_SESSION['directoryAttTable'] . ".studentID = " . $_SESSION['directoryTable'] . ".id ";
 
     $result = $database->query($queryStr);
-    $rows = $result->numRows();
+    $rows = $result->num_rows;
 ?>
 
 <html>
@@ -84,7 +84,7 @@ session_start();
     <body>
         <?php if ($rows != 1) echo "<h1>Student Not Found!</h1>";
             else {
-                $data = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+                $data = $result->fetch_assoc();
                 $phoneNumber = $data['phone'];
                 $phoneStr = $phoneNumber;
                 if (strlen($phoneStr) == 10) $phoneStr = substr($phoneNumber, 0, 3) . "-" . substr($phoneNumber, 3, 3) . "-" . substr($phoneNumber, 6);

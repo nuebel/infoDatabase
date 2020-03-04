@@ -16,10 +16,10 @@ session_start();
         if ($_REQUEST['formAction'] == 'updateAtt' && $week != '0') {
             $studentsQuery = "SELECT * FROM " . $_SESSION['directoryTable'] . " WHERE color='" . $color . "'";
             $studentsResult = $database->query($studentsQuery);
-            $studentsRows = $studentsResult->numRows();
+            $studentsRows = $studentsResult->num_rows;
             
             for ($i=0; $i<$studentsRows; $i++) {
-                $data = $studentsResult->fetchRow(DB_FETCHMODE_ASSOC, $i);
+                $data = $studentsResult->fetch_assoc();
                 $id = $data['id'];
                 $varName = ($sem == 'spring') ? "week" . ($week + 15) : "week" . $week;
                 if (isset($_REQUEST[$id]))
@@ -43,7 +43,7 @@ session_start();
     $_SESSION['query'] = $queryStr;
 
     $result = $database->query($queryStr);
-    $rows = $result->numRows();
+    $rows = $result->num_rows;
 
 ?>
 
@@ -133,7 +133,7 @@ session_start();
                 $males = array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
                 $females = array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
                 for ($i=0; $i < $rows; $i++) {
-                    $data = $result->fetchRow(DB_FETCHMODE_ASSOC, $i);
+                    $data = $result->fetch_assoc();
                     if ($i % 2 == 1) echo "<tr class='shaded'>";
                     else echo "<tr>";
                     echo "<td>" . $data['first_name'] . "</td>";

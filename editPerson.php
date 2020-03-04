@@ -6,7 +6,7 @@ session_start();
     $queryStr = "SELECT * FROM " . $_SESSION['directoryTable'] . " WHERE id='" . $_REQUEST['id'] . "'";
 
     $result = $database->query($queryStr);
-    $rows = $result->numRows();
+    $rows = $result->num_rows;
 ?>
 
 <html>
@@ -42,7 +42,7 @@ session_start();
     <body>
         <?php if ($rows != 1) echo "<h1>Student Not Found!</h1>";
             else {
-              $data = $result->fetchRow(DB_FETCHMODE_ASSOC, 0);
+              $data = $result->fetch_assoc();
         ?>
         <h2>Edit Student Information</h2>
         <form name="editForm" action="displayPerson.php" method="post">

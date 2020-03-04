@@ -77,7 +77,7 @@
     $_SESSION['message'] = $topMessage;
 
     $result = $database->query($queryStr);
-    $rows = $result->numRows();
+    $rows = $result->num_rows;
 ?>
 
 <html>
@@ -107,7 +107,7 @@
                 </tr>
             <?php
                 for ($i=0; $i < $rows; $i++) {
-                    $data = $result->fetchRow(DB_FETCHMODE_ASSOC, $i);
+                    $data = $result->fetch_assoc();
                     $address = $data['streetNum_local'] . ' ' . $data['street_local'];
                     $homeAddress = $data['street_perm'] . ' ' . $data['city_perm'] . ', ' . $data['state_perm'] . ' ' . $data['zip_perm'];
                     $phoneNumber = $data['phone'];

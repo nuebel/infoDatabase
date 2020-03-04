@@ -6,17 +6,17 @@ session_start();
     //On Campus Queries
     $queryStr = "SELECT * FROM " . $_SESSION['directoryTable'] . " WHERE on_campus='true'";
     $result = $database->query($queryStr);
-    $numOnCampus = $result->numRows();
+    $numOnCampus = $result->num_rows;
 
     $queryStr = "SELECT * FROM " . $_SESSION['directoryTable'] . " WHERE on_campus='true'";
     $queryStr .= " AND gender='m'";
     $result = $database->query($queryStr);
-    $numOnCampusMale = $result->numRows();
+    $numOnCampusMale = $result->num_rows;
 
     $queryStr = "SELECT * FROM " . $_SESSION['directoryTable'] . " WHERE on_campus='true'";
     $queryStr .= " AND gender='f'";
     $result = $database->query($queryStr);
-    $numOnCampusFemale = $result->numRows();
+    $numOnCampusFemale = $result->num_rows;
 
     $queryStr = "SELECT COUNT(*) AS count, street_local FROM " . $_SESSION['directoryTable'];
     $queryStr .= " WHERE on_campus='true'";
@@ -26,15 +26,15 @@ session_start();
     //All Student Queries
     $queryStr = "SELECT * FROM " . $_SESSION['directoryTable'];
     $result = $database->query($queryStr);
-    $numAll = $result->numRows();
+    $numAll = $result->num_rows;
 
     $queryStr = "SELECT * FROM " . $_SESSION['directoryTable'] . " WHERE gender='m'";
     $result = $database->query($queryStr);
-    $numAllMale = $result->numRows();
+    $numAllMale = $result->num_rows;
 
     $queryStr = "SELECT * FROM " . $_SESSION['directoryTable'] . " WHERE gender='f'";
     $result = $database->query($queryStr);
-    $numAllFemale = $result->numRows();
+    $numAllFemale = $result->num_rows;
 
     $queryStr = "SELECT COUNT(*) AS count, class FROM " . $_SESSION['directoryTable'];
     $queryStr .= " GROUP BY class ORDER BY class";
@@ -44,14 +44,14 @@ session_start();
     for ($i=1; $i<=30; $i++) {
         $queryStr = "SELECT * FROM " . $_SESSION['directoryAttTable'] . " WHERE week" . $i . "='1'";
         $result = $database->query($queryStr);
-        $bs_all[$i] = $result->numRows();
+        $bs_all[$i] = $result->num_rows;
 
         $queryStr = "SELECT * FROM " . $_SESSION['directoryTable'] . ", " . $_SESSION['directoryAttTable']
             . " WHERE " . $_SESSION['directoryAttTable'] . ".studentID = " . $_SESSION['directoryTable'] . ".id "
             . " AND " . $_SESSION['directoryTable'] . ".gender='m' "
             . " AND " . $_SESSION['directoryAttTable'] . ".week" . $i . "='1'";
         $result = $database->query($queryStr);
-        $bs_male[$i] = $result->numRows();
+        $bs_male[$i] = $result->num_rows;
 
         $bs_female[$i] = $bs_all[$i] - $bs_male[$i];
     }
@@ -76,9 +76,9 @@ session_start();
                 <tr onclick="DoNav('dbSearch.php?onCampus_gender=m');"><td>Males</td><td><?php echo $numOnCampusMale;?></td></tr>
                 <tr onclick="DoNav('dbSearch.php?onCampus_gender=f');"><td>Females</td><td><?php echo $numOnCampusFemale;?></td></tr>
                 <?php
-                $rows = $dormResult->numRows();
+                $rows = $dormResult->num_rows;
                 for ($i=0; $i < $rows; $i++) {
-                    $data = $dormResult->fetchRow(DB_FETCHMODE_ASSOC, $i);
+                    $data = $dormResult->fetch_assoc();
                     echo "<tr onclick=\"DoNav('dbSearch.php?dorm=" . $data['street_local'] . "');\">";
                     echo "<td>" . $data['street_local'] . "</td><td>" . $data['count'] . "</td></tr>";
                 }
@@ -93,9 +93,9 @@ session_start();
                     <tr onclick="DoNav('dbSearch.php?gender=m');"><td>Males</td><td><?php echo $numAllMale;?></td></tr>
                     <tr onclick="DoNav('dbSearch.php?gender=f');"><td>Females</td><td><?php echo $numAllFemale;?></td></tr>
                 <?php
-                    $rows = $classResult->numRows();
+                    $rows = $classResult->num_rows;
                     for ($i=0; $i < $rows; $i++) {
-                        $data = $classResult->fetchRow(DB_FETCHMODE_ASSOC, $i);
+                        $data = $classResult->fetch_assoc();
                         echo "<tr onclick=\"DoNav('dbSearch.php?class=" . $data['class'] . "');\">";
                         echo "<td>Class: " . $data['class'] . "</td><td>" . $data['count'] . "</td></tr>";
                     }

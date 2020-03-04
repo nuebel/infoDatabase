@@ -28,12 +28,11 @@ session_start();
     $_SESSION['message'] = $topMessage;
 
     $result = $database->query($queryStr);
-    $rows = $result->numRows();
+    $rows = $result->num_rows;
 ?>
 
 <html>
     <head>
-        <link href="../style.css" rel="stylesheet" type="text/css" />
         <link href="./directory.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript">
           function DoNav(theUrl) {
@@ -54,7 +53,7 @@ session_start();
                 </tr>
             <?php
                 for ($i=0; $i < $rows; $i++) {
-                    $data = $result->fetchRow(DB_FETCHMODE_ASSOC, $i);
+                    $data = $result->fetch_assoc();
                     $address = $data['streetNum_local'] . ' ' . $data['street_local'];
                     if ($i % 2 == 1) echo "<tr class='shaded' ";
                     else echo "<tr ";

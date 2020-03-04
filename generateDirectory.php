@@ -40,7 +40,7 @@ $pdf->AddPage();
 
 $queryStr = $_SESSION['query'];
 $result = $database->query($queryStr);
-$rows = $result->numRows();
+$rows = $result->num_rows;
 
 //Variables
 $lineHeight = 5;
@@ -50,7 +50,7 @@ $pdf->SetFont('Arial', '', 6);
 $entryWidth = array(18, 12, 20, 30, 10, 25, 25, 18, 18, 0);
 
 for($i=0; $i<$rows; $i++) {
-    $data = $result->fetchRow(DB_FETCHMODE_ASSOC, $i);
+    $data = $result->fetch_assoc();
     $phoneNumber = $data['phone'];
 	$phoneStr = $phoneNumber;
     if (strlen($phoneStr) == 10) $phoneStr = substr($phoneNumber, 0, 3) . "-" . substr($phoneNumber, 3, 3) . "-" . substr($phoneNumber, 6);

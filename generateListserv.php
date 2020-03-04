@@ -9,12 +9,12 @@ $queryStr = "SELECT email, first_name, last_name FROM " . $_SESSION['directoryTa
     . "AND email != '' "
     . "ORDER BY last_name";
 $result = $database->query($queryStr);
-$rows = $result->numRows();
+$rows = $result->num_rows;
 
 $buffer = "";
 
 for ($i=0; $i < $rows; $i++) {
-    $data = $result->fetchRow(DB_FETCHMODE_ASSOC, $i);
+    $data = $result->fetch_assoc();
     if ($data['email'] != "")
         $buffer .= $data['email'] . "\t" . $data['first_name'] . "\t" . $data['last_name'] . "\r\n";
 }
