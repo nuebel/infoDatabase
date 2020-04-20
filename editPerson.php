@@ -74,7 +74,7 @@ session_start();
                     <option value="maroon" <?php if ($data['color'] == "maroon") echo "selected=\"yes\"";?> >Maroon</option>
                     <option value="navy" <?php if ($data['color'] == "navy") echo "selected=\"yes\"";?> >Navy</option>
                     <option value="orange" <?php if ($data['color'] == "orange") echo "selected=\"yes\"";?> >Orange</option>
-                    <option value="orange" <?php if ($data['color'] == "pink") echo "selected=\"yes\"";?> >Pink</option>
+                    <option value="pink" <?php if ($data['color'] == "pink") echo "selected=\"yes\"";?> >Pink</option>
                     <option value="purple" <?php if ($data['color'] == "purple") echo "selected=\"yes\"";?> >Purple</option>
                     <option value="red" <?php if ($data['color'] == "red") echo "selected=\"yes\"";?> >Red</option>
                     <option value="silver" <?php if ($data['color'] == "silver") echo "selected=\"yes\"";?> >Silver</option>
