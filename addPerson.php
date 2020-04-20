@@ -59,6 +59,7 @@
                     <option value="maroon">Maroon</option>
                     <option value="navy">Navy</option>
                     <option value="orange">Orange</option>
+                    <option value="pink">Pink</option>
                     <option value="purple">Purple</option>
                     <option value="red">Red</option>
                     <option value="silver">Silver</option>
