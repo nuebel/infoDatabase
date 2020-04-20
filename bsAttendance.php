@@ -70,6 +70,7 @@ session_start();
                     <option value="maroon" <?php if ($color == 'maroon') echo "selected";?>>Maroon</option>
                     <option value="navy" <?php if ($color == 'navy') echo "selected";?>>Navy</option>
                     <option value="orange" <?php if ($color == 'orange') echo "selected";?>>Orange</option>
+                    <option value="pink" <?php if ($color == 'pink') echo "selected";?>>Pink</option>
                     <option value="purple" <?php if ($color == 'purple') echo "selected";?>>Purple</option>
                     <option value="red" <?php if ($color == 'red') echo "selected";?>>Red</option>
                     <option value="silver" <?php if ($color == 'silver') echo "selected";?>>Silver</option>
